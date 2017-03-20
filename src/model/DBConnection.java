@@ -2,7 +2,12 @@ package model;
 
 import java.sql.*;
 
+import org.apache.log4j.Logger;
+
 public class DBConnection {
+
+	private final static Logger logger = Logger.getLogger(DBConnection.class);
+	
 	private Connection conn;
 	private static DBConnection instance;
 	
@@ -17,15 +22,16 @@ public class DBConnection {
 		return instance;
 	}
 	
-	public ResultSet query(String sqlString) {	
+	public QueryResult query(String sqlString) {
+		logger.debug("query: " + sqlString);
+		
 		connect();
 		
 		if (conn != null) {
 			try {
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sqlString);
-				stmt.close();
-				return rs;
+				return new QueryResult(rs, stmt);
 			} catch (SQLException e) {
 				System.out.println("Error: Failed to query the Database");
 				throw new RuntimeException(e);
@@ -46,6 +52,8 @@ public class DBConnection {
 	}
 	
 	public void update(String sqlString) {
+		logger.debug("update/insert/delete: " + sqlString);
+		
 		connect();
 		
 		if (conn != null) {
@@ -69,9 +77,9 @@ public class DBConnection {
 		
 		if (conn != null) {
 			ResultSet rs = null;
-			
+			CallableStatement cs = null;
 			try {
-				CallableStatement cs = conn.prepareCall("{call create_session(?,?)}"); 
+				cs = conn.prepareCall("{call create_session(?,?)}"); 
 				cs.setString(1, CurrentUser.getInstance().getUsername()); 
 				cs.setInt(2, questionCount);
 				rs = cs.executeQuery();
@@ -79,8 +87,19 @@ public class DBConnection {
 				System.out.println("Error: Failed to update the Database");
 				throw new RuntimeException(e);
 			} finally {
+				if(cs != null) {
+					try {
+						cs.close();
+					} catch (SQLException e) {
+						//oh well...
+					}
+				}
 				if (rs != null) {
-					closeResultSet(rs);
+					try {
+						rs.close();
+					} catch (SQLException e) {
+						//oh well...
+					}
 				}
 				
 				close();
@@ -92,15 +111,6 @@ public class DBConnection {
 	
 	private void connect() {
 		try {
-			
-			/*
-			try {
-				Class.forName("org.postgresql.Driver");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			*/
 			
 			DriverManager.registerDriver(new org.postgresql.Driver());
 
@@ -122,9 +132,9 @@ public class DBConnection {
 		}
 	}
 	
-	public static void closeResultSet(ResultSet rs) {
+	public static void closeQueryResult(QueryResult result) {
 		try {
-			rs.close();
+			result.getStatement().close();
 		} catch (SQLException e) {
 			//oh well...
 		}

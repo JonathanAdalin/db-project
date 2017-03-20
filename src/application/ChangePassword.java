@@ -12,7 +12,7 @@ public class ChangePassword implements MenuChoice{
 		Scanner uInput = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("Old Password: ");
+			System.out.print("Old Password: ");
 			String oldPassword = uInput.nextLine();
 			
 			if (!oldPassword.equals(CurrentUser.getInstance().getPassword())) {
@@ -20,10 +20,10 @@ public class ChangePassword implements MenuChoice{
 				continue;
 			}
 			
-			System.out.println("New Password: ");
+			System.out.print("New Password: ");
 			String newPassword = uInput.nextLine();
 
-			System.out.println("Confirm New Password: ");
+			System.out.print("Confirm New Password: ");
 			String confirmedNewPassword = uInput.nextLine();
 			
 			if (!newPassword.equals(confirmedNewPassword)) {

@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.DBConnection;
+import model.QueryResult;
 
 public class ViewLeaderboard implements MenuChoice {
 
@@ -14,8 +15,9 @@ public class ViewLeaderboard implements MenuChoice {
 						+ " ORDER BY level DESC, total_points DESC"
 						+ " LIMIT 10;";
 		
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
-		
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
+				
 		try {
 			System.out.println("Username, Level, Total Points");
 			
@@ -28,11 +30,11 @@ public class ViewLeaderboard implements MenuChoice {
 				System.out.println(counter++ + ". " + username + ", " + level + ", " + total_points);
 			}
 		} catch (SQLException e) {
-			System.out.println("Error: database access error or closed result set");
+			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
+		} finally {
+			DBConnection.closeQueryResult(queryResult);
 		}
-		
-		DBConnection.closeResultSet(result);
 	}
 
 	@Override

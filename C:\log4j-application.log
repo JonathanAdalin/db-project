@@ -1,0 +1,25 @@
+2017-03-20 08:42:59 DEBUG Application:40 - Logging initialized.
+2017-03-20 08:42:59 DEBUG Application:22 - test
+2017-03-20 08:43:08 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:43:08 DEBUG Application:21 - test
+2017-03-20 08:43:28 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:43:28 DEBUG Application:21 - test
+2017-03-20 08:43:32 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:43:32 DEBUG Application:21 - test
+2017-03-20 08:43:39 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:43:39 DEBUG Application:21 - test
+2017-03-20 08:51:05 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:51:41 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:51:54 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username=fredglozman;
+2017-03-20 08:53:38 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:53:46 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 08:56:06 DEBUG Application:39 - Logging initialized.
+2017-03-20 08:56:15 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 09:09:08 DEBUG Application:39 - Logging initialized.
+2017-03-20 09:09:18 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 09:09:39 DEBUG Application:39 - Logging initialized.
+2017-03-20 09:09:43 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 09:12:12 DEBUG Application:39 - Logging initialized.
+2017-03-20 09:12:20 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 09:15:44 DEBUG Application:39 - Logging initialized.
+2017-03-20 09:15:51 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';

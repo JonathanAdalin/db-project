@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import model.CurrentUser;
 import model.DBConnection;
+import model.QueryResult;
 
 public class FollowToggle implements MenuChoice {
 
@@ -14,7 +15,7 @@ public class FollowToggle implements MenuChoice {
 		Scanner uInput = new Scanner(System.in);
 		
 		while (true) {
-			System.out.println("Username: ");
+			System.out.print("Username: ");
 			
 			String username = uInput.nextLine();
 			
@@ -41,18 +42,19 @@ public class FollowToggle implements MenuChoice {
 				+ "FROM users "
 				+ "WHERE username = \"" + username + "\";";
 
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
 		
 		boolean exists;
 		
 		try {
 			exists = result.next();
 		} catch (SQLException e) {
-			System.out.println("Error: database access error or closed result set");
+			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
 		}
 		
-		DBConnection.closeResultSet(result);
+		DBConnection.closeQueryResult(queryResult);
 		
 		return exists;
 	}
@@ -73,18 +75,19 @@ public class FollowToggle implements MenuChoice {
 				+ "FROM followings "
 				+ "WHERE p1 = \"" + CurrentUser.getInstance().getUsername() + "\" AND p2 = \"" + username + "\";";
 
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
 		
 		boolean alreadyFollowing;
 		
 		try {
 			alreadyFollowing = result.next();
 		} catch (SQLException e) {
-			System.out.println("Error: database access error or closed result set");
+			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
 		}
 		
-		DBConnection.closeResultSet(result);
+		DBConnection.closeQueryResult(queryResult);
 		
 		return alreadyFollowing;
 	}

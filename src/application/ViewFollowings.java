@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import model.CurrentUser;
 import model.DBConnection;
+import model.QueryResult;
 
 public class ViewFollowings implements MenuChoice {
 
@@ -16,8 +17,9 @@ public class ViewFollowings implements MenuChoice {
 				+ "SELECT * FROM followings "
 				+ "WHERE p1 = '" + CurrentUser.getInstance().getUsername() + "' AND p2 = username);";
 
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
-		
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
+				
 		try {
 			System.out.println("Username, Level, Total Points");
 			
@@ -29,11 +31,11 @@ public class ViewFollowings implements MenuChoice {
 				System.out.println(username + ", " + level + ", " + total_points);
 			}
 		} catch (SQLException e) {
-			System.out.println("Error: database access error or closed result set");
+			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
+		} finally {
+			DBConnection.closeQueryResult(queryResult);
 		}
-		
-		DBConnection.closeResultSet(result);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import model.CurrentUser;
 import model.DBConnection;
+import model.QueryResult;
 
 public class SignIn implements MenuChoice {
 
@@ -14,10 +15,10 @@ public class SignIn implements MenuChoice {
 		Scanner uInput = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("Username: ");
+			System.out.print("Username: ");
 			String username = uInput.nextLine();
 
-			System.out.println("Password: ");
+			System.out.print("Password: ");
 			String password = uInput.nextLine();
 			
 			if (!validCredentials(username, password)) {
@@ -26,7 +27,8 @@ public class SignIn implements MenuChoice {
 			} 
 			
 			CurrentUser.getInstance().setCredentials(username, password);
-						
+			System.out.println("Sign in successful");
+			
 			break;
 		}
 
@@ -36,20 +38,23 @@ public class SignIn implements MenuChoice {
 	}
 
 	private boolean validCredentials(String username, String password) {
-		String sqlString = "SELECT password FROM Users WHERE username=" + username + ";";
-		ResultSet result = DBConnection.getInstance().query(sqlString);
+		String sqlString = "SELECT password FROM Users WHERE username='" + username + "';";
+		QueryResult queryResult = DBConnection.getInstance().query(sqlString);
+		ResultSet result = queryResult.getResult();
 		
 		try {
 			if (result != null) {
+				result.next();
 				String dbPassword = result.getString("password");
 				return dbPassword.equals(password);
 			} else {
 				return false;
 			}
 		} catch (SQLException e) {
-			return false;
+			System.out.println("Error: failed to extract data from ResultSet");
+			throw new RuntimeException(e);
 		} finally {
-			DBConnection.closeResultSet(result);
+			DBConnection.closeQueryResult(queryResult);
 		}
 	}
 	

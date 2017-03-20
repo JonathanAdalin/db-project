@@ -22,6 +22,7 @@ public class Menu {
 		Scanner uInput = new Scanner(System.in);
 
 		while (true) {
+			System.out.print("Selection: ");
 			String input = uInput.nextLine();
 			int selection;
 			

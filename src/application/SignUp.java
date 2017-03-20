@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import model.CurrentUser;
 import model.DBConnection;
+import model.QueryResult;
 
 public class SignUp implements MenuChoice {
 	private static final int MIN_PASSWORD_SIZE = 8;
@@ -16,13 +17,13 @@ public class SignUp implements MenuChoice {
 		Scanner uInput = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("Username: ");
+			System.out.print("Username: ");
 			String username = uInput.nextLine();
 			
-			System.out.println("Password: ");
+			System.out.print("Password: ");
 			String password = uInput.nextLine();
 			
-			System.out.println("Confirm Password: ");
+			System.out.print("Confirm Password: ");
 			String confirmedPassword = uInput.nextLine();
 
 			
@@ -48,6 +49,8 @@ public class SignUp implements MenuChoice {
 			
 			CurrentUser.getInstance().setCredentials(username, password);
 			
+			System.out.println("Sign up successful");
+			
 			break;
 		}
 
@@ -66,17 +69,18 @@ public class SignUp implements MenuChoice {
 	
 	private boolean validUsername(String username) {
 		String sqlQuery = "SELECT username FROM Users WHERE username=\"" + username + "\";";
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
-	
+		
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
+				
 		try {
 			return result == null || !result.next();
 		} catch (SQLException e) {
-			//wat?
+			System.out.println("Error: failed to extract data from ResultSet");
+			throw new RuntimeException(e);
 		} finally {
-			DBConnection.closeResultSet(result);
+			DBConnection.closeQueryResult(queryResult);
 		}
-	
-		return false;
 	}
 	
 	public static boolean validPassword(String password) {

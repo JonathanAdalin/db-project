@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import model.CurrentUser;
 import model.DBConnection;
+import model.QueryResult;
 
 public class StartSession implements MenuChoice {
 
@@ -16,7 +17,7 @@ public class StartSession implements MenuChoice {
 		Scanner uInput = new Scanner(System.in);
 		int questionCount;
 		while (true) {
-			System.out.println("Desired number of questions: ");
+			System.out.print("Desired number of questions: ");
 			String input = uInput.nextLine();
 			
 			try {
@@ -57,8 +58,9 @@ public class StartSession implements MenuChoice {
 		List<String> ids = new LinkedList<String>();
 
 		String sqlQuery = "SELECT content FROM choices WHERE qid = " + questionId + " ORDER BY is_correct DESC;"; 
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
-		
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
+				
 		try {
 			while (result.next()) {
 				ids.add(result.getString("content"));
@@ -66,6 +68,8 @@ public class StartSession implements MenuChoice {
 		} catch (SQLException e) {
 			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
+		} finally {
+			DBConnection.closeQueryResult(queryResult);
 		}
 
 		return ids;
@@ -75,8 +79,9 @@ public class StartSession implements MenuChoice {
 		List<Integer> ids = new LinkedList<Integer>();
 
 		String sqlQuery = "SELECT cid FROM choices WHERE qid = " + questionId + " ORDER BY is_correct DESC;"; 
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
-		
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
+				
 		try {
 			while (result.next()) {
 				ids.add(result.getInt("cid"));
@@ -84,6 +89,8 @@ public class StartSession implements MenuChoice {
 		} catch (SQLException e) {
 			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
+		} finally {
+			DBConnection.closeQueryResult(queryResult);
 		}
 
 		return ids;
@@ -93,7 +100,8 @@ public class StartSession implements MenuChoice {
 		List<Integer> ids = new LinkedList<Integer>();
 		
 		String sqlQuery = "SELECT qid FROM containments WHERE sid = " + sessionId + ";"; 
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
 		
 		try {
 			while (result.next()) {
@@ -102,6 +110,8 @@ public class StartSession implements MenuChoice {
 		} catch (SQLException e) {
 			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
+		} finally {
+			DBConnection.closeQueryResult(queryResult);
 		}
 
 		return ids;
@@ -110,7 +120,8 @@ public class StartSession implements MenuChoice {
 	private int findNewSession() {
 		String sqlQuery = "SELECT sid FROM sessions WHERE username = '" + CurrentUser.getInstance().getUsername() + "' ORDER BY time DESC LIMIT 1;";
 		
-		ResultSet result = DBConnection.getInstance().query(sqlQuery);
+		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
+		ResultSet result = queryResult.getResult();
 		
 		try {
 			if (result != null) {
@@ -122,7 +133,7 @@ public class StartSession implements MenuChoice {
 			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);
 		} finally {
-			DBConnection.closeResultSet(result);
+			DBConnection.closeQueryResult(queryResult);
 		}
 	}
 

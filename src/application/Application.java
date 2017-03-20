@@ -1,37 +1,45 @@
 package application;
 
-import java.sql.ResultSet;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
-import model.DBConnection;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
-public class Application {
-	private static String prompt = "";
+public class Application {	
 	
-	//1. sign up
-		//1.1 Username
-		//1.2 Password
-	//2. sign in
-		//2.1 Username
-		//2.2 Password
-	//3. quit
+	private static final String LOG_PROPERTIES_FILE = "log4j.properties";
 	
-	//users
-	//----------------------------------
-	//x. start a session
-	//		x.1 pick number of questions
-	//x.	 view leaderboard
-	//x. view followed users
-	//x. follow/unfollow a player
-	//x. change password
-	//x. quit
+	private final static Logger logger = Logger.getLogger(Application.class);
 	
-	public static void main(String args[]) {
-		
-		
-				
-		String sqlQuery = "SELECT * FROM questions;";
-		ResultSet rs = DBConnection.getInstance().query(sqlQuery);
-		System.out.println(rs);
-				
+	public static void main(String args[]) {				
+		new Application().start();
+	}
+	
+	public Application() {
+		init();
+	}
+	
+	public void start() {
+		new Menu(Menu.SIGNIN_SIGNUP_MENU).start();
+	}
+	
+	private static void init() {
+		initLogger();
+	}
+	
+	private static void initLogger()
+	{
+		Properties logProperties = new Properties();
+
+		try{
+			logProperties.load(new FileInputStream(LOG_PROPERTIES_FILE));
+			PropertyConfigurator.configure(logProperties);
+			logger.debug("Logging initialized.");
+		}
+		catch (IOException e) {
+			throw new RuntimeException("Unable to load logging property " + LOG_PROPERTIES_FILE);
+		}
 	}
 }
