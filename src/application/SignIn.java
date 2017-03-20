@@ -2,7 +2,6 @@ package application;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import model.CurrentUser;
 import model.DBConnection;
@@ -12,14 +11,13 @@ public class SignIn implements MenuChoice {
 
 	@Override
 	public void execute() {
-		Scanner uInput = new Scanner(System.in);
-
+		
 		while (true) {
 			System.out.print("Username: ");
-			String username = uInput.nextLine();
+			String username = UserInput.getInstance().getString();;
 
 			System.out.print("Password: ");
-			String password = uInput.nextLine();
+			String password = UserInput.getInstance().getString();
 			
 			if (!validCredentials(username, password)) {
 				System.out.println("Error: Incorrect username or password");
@@ -31,8 +29,6 @@ public class SignIn implements MenuChoice {
 			
 			break;
 		}
-
-		uInput.close();
 		
 		new Menu(Menu.PLAYER_MENU).start();
 	}

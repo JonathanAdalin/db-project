@@ -2,7 +2,6 @@ package application;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import model.CurrentUser;
 import model.DBConnection;
@@ -11,13 +10,11 @@ import model.QueryResult;
 public class FollowToggle implements MenuChoice {
 
 	@Override
-	public void execute() {
-		Scanner uInput = new Scanner(System.in);
-		
+	public void execute() {		
 		while (true) {
 			System.out.print("Username: ");
 			
-			String username = uInput.nextLine();
+			String username = UserInput.getInstance().getString();
 			
 			if (alreadyFollowing(username)) {
 				removeFollowing(username);
@@ -33,14 +30,12 @@ public class FollowToggle implements MenuChoice {
 			
 			System.out.println("Error: user does not exist, please try again");
 		}
-		
-		uInput.close();
 	}
 	
 	private boolean userExists(String username) {
 		String sqlQuery = "SELECT * "
 				+ "FROM users "
-				+ "WHERE username = \"" + username + "\";";
+				+ "WHERE username = '" + username + "';";
 
 		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
 		ResultSet result = queryResult.getResult();
@@ -66,14 +61,14 @@ public class FollowToggle implements MenuChoice {
 	}
 	
 	private void removeFollowing(String username) {
-		String sqlString = "DELETE FROM followings WHERE p1 = \"" + CurrentUser.getInstance().getUsername() + "\" AND p2 = \"" + username + "\";";
+		String sqlString = "DELETE FROM followings WHERE p1 = '" + CurrentUser.getInstance().getUsername() + "' AND p2 = '" + username + "';";
 		DBConnection.getInstance().delete(sqlString);
 	}
 	
 	private boolean alreadyFollowing(String username) {
 		String sqlQuery = "SELECT * "
 				+ "FROM followings "
-				+ "WHERE p1 = \"" + CurrentUser.getInstance().getUsername() + "\" AND p2 = \"" + username + "\";";
+				+ "WHERE p1 = '" + CurrentUser.getInstance().getUsername() + "' AND p2 = '" + username + "';";
 
 		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
 		ResultSet result = queryResult.getResult();

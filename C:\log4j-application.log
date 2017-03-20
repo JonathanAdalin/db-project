@@ -23,3 +23,247 @@
 2017-03-20 09:12:20 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
 2017-03-20 09:15:44 DEBUG Application:39 - Logging initialized.
 2017-03-20 09:15:51 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:37:58 DEBUG Application:39 - Logging initialized.
+2017-03-20 11:38:08 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:39:53 DEBUG Application:39 - Logging initialized.
+2017-03-20 11:40:23 DEBUG Application:39 - Logging initialized.
+2017-03-20 11:40:31 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:40:44 DEBUG Application:39 - Logging initialized.
+2017-03-20 11:40:52 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:41:09 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:49:05 DEBUG Application:39 - Logging initialized.
+2017-03-20 11:49:11 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:49:17 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:49:24 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players ORDER BY level DESC, total_points DESC LIMIT 10;
+2017-03-20 11:49:38 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players WHERE EXISTS (SELECT * FROM followings WHERE p1 = 'fredglozman' AND p2 = username);
+2017-03-20 11:49:51 DEBUG DBConnection:26 - query: SELECT * FROM followings WHERE p1 = "fredglozman" AND p2 = "stanlee";
+2017-03-20 11:54:55 DEBUG Application:39 - Logging initialized.
+2017-03-20 11:55:04 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 11:55:10 DEBUG DBConnection:26 - query: SELECT * FROM followings WHERE p1 = 'fredglozman' AND p2 = 'stanlee';
+2017-03-20 11:55:10 DEBUG DBConnection:26 - query: SELECT * FROM users WHERE username = 'stanlee';
+2017-03-20 11:55:10 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO followings VALUES ('fredglozman', 'stanlee');
+2017-03-20 11:55:32 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players WHERE EXISTS (SELECT * FROM followings WHERE p1 = 'fredglozman' AND p2 = username);
+2017-03-20 12:01:14 DEBUG Application:39 - Logging initialized.
+2017-03-20 12:01:24 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 12:02:29 DEBUG Application:39 - Logging initialized.
+2017-03-20 12:02:35 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 12:02:54 DEBUG MenuChoice:95 - containsSpecialCharacters: false
+2017-03-20 12:02:54 DEBUG MenuChoice:96 - goodLength: true
+2017-03-20 12:03:12 DEBUG Application:39 - Logging initialized.
+2017-03-20 12:03:21 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 12:03:36 DEBUG MenuChoice:95 - containsSpecialCharacters: false
+2017-03-20 12:03:36 DEBUG MenuChoice:96 - goodLength: true
+2017-03-20 12:04:14 DEBUG Application:39 - Logging initialized.
+2017-03-20 12:04:34 DEBUG DBConnection:26 - query: SELECT username FROM Users WHERE username='bob';
+2017-03-20 12:04:44 DEBUG DBConnection:26 - query: SELECT username FROM Users WHERE username='bob';
+2017-03-20 12:05:02 DEBUG DBConnection:26 - query: SELECT username FROM Users WHERE username='bobbyTables';
+2017-03-20 12:05:02 DEBUG MenuChoice:95 - containsSpecialCharacters: false
+2017-03-20 12:05:02 DEBUG MenuChoice:96 - goodLength: false
+2017-03-20 12:05:26 DEBUG DBConnection:26 - query: SELECT username FROM Users WHERE username='bobbyTables';
+2017-03-20 12:05:26 DEBUG MenuChoice:95 - containsSpecialCharacters: true
+2017-03-20 12:05:26 DEBUG MenuChoice:96 - goodLength: true
+2017-03-20 12:05:26 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO users VALUES ('bobbyTables', 'veryGood&PASSWORD', now(), 0);
+2017-03-20 12:05:26 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO players VALUES ('bobbyTables', 0, 0, 0);
+2017-03-20 12:05:58 DEBUG MenuChoice:95 - containsSpecialCharacters: true
+2017-03-20 12:05:58 DEBUG MenuChoice:96 - goodLength: true
+2017-03-20 12:05:58 DEBUG DBConnection:55 - update/insert/delete: UPDATE users SET password = 'cs421-ftw' WHERE username = 'bobbyTables' ;
+2017-03-20 12:50:21 DEBUG Application:39 - Logging initialized.
+2017-03-20 12:50:42 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 12:50:46 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players ORDER BY level DESC, total_points DESC LIMIT 10;
+2017-03-20 18:11:28 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:11:53 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:12:15 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC LIMIT 1;
+2017-03-20 18:12:50 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:13:01 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC LIMIT 1;
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 8;
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 30 ORDER BY is_correct DESC;
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 30 ORDER BY is_correct DESC;
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 77 ORDER BY is_correct DESC;
+2017-03-20 18:13:04 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 77 ORDER BY is_correct DESC;
+2017-03-20 18:13:27 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players ORDER BY level DESC, total_points DESC LIMIT 10;
+2017-03-20 18:15:37 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:15:45 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:15:48 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC LIMIT 1;
+2017-03-20 18:15:48 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 8;
+2017-03-20 18:15:48 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:15:48 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:16:07 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (8, 347);
+2017-03-20 18:16:15 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (8, 348);
+2017-03-20 18:16:17 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (8, 349);
+2017-03-20 18:16:19 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (8, 350);
+2017-03-20 18:20:31 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:20:42 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:20:46 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC LIMIT 1;
+2017-03-20 18:20:46 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 8;
+2017-03-20 18:20:46 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:20:46 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:20:46 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 89;
+2017-03-20 18:21:07 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:21:13 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:21:16 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC LIMIT 1;
+2017-03-20 18:21:16 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 8;
+2017-03-20 18:21:16 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:21:16 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:21:16 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 89;
+2017-03-20 18:21:28 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (8, 347);
+2017-03-20 18:24:23 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:24:32 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:24:35 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:24:35 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 13;
+2017-03-20 18:24:35 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 32 ORDER BY is_correct DESC;
+2017-03-20 18:24:35 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 32 ORDER BY is_correct DESC;
+2017-03-20 18:24:35 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 32;
+2017-03-20 18:24:41 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (13, 125);
+2017-03-20 18:26:39 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:26:47 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:26:49 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:26:49 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 14;
+2017-03-20 18:26:49 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 91 ORDER BY is_correct DESC;
+2017-03-20 18:26:49 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 91 ORDER BY is_correct DESC;
+2017-03-20 18:26:49 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 91;
+2017-03-20 18:26:53 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (14, 355);
+2017-03-20 18:26:53 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:26:53 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:26:53 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 89;
+2017-03-20 18:27:05 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (14, 347);
+2017-03-20 18:27:05 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:27:05 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:27:05 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 92;
+2017-03-20 18:27:08 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (14, 359);
+2017-03-20 18:28:43 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:28:53 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:28:57 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:28:57 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 15;
+2017-03-20 18:28:57 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:28:57 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:28:57 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 89;
+2017-03-20 18:29:07 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (15, 348);
+2017-03-20 18:29:07 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:29:07 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:29:07 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:29:07 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 92;
+2017-03-20 18:29:16 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (15, 360);
+2017-03-20 18:29:16 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:32:07 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:32:16 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:32:21 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:32:21 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 16;
+2017-03-20 18:32:21 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:32:21 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:32:21 DEBUG StartSession:44 - [Ellie, Chloe, Susy, Bertha]
+2017-03-20 18:32:21 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 4;
+2017-03-20 18:32:49 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:33:09 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:33:17 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:33:20 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:33:20 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 17;
+2017-03-20 18:33:20 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:33:20 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:33:20 DEBUG StartSession:44 - [Canadiens, Maple Leafs, Blackhawks, Montrealers]
+2017-03-20 18:33:20 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 89;
+2017-03-20 18:33:25 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (17, 347);
+2017-03-20 18:33:25 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:33:25 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:33:25 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:33:25 DEBUG StartSession:44 - [Ellie, Chloe, Susy, Bertha]
+2017-03-20 18:33:25 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 4;
+2017-03-20 18:33:28 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (17, 14);
+2017-03-20 18:33:40 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players ORDER BY level DESC, total_points DESC LIMIT 10;
+2017-03-20 18:33:53 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:33:53 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 18;
+2017-03-20 18:33:53 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 72 ORDER BY is_correct DESC;
+2017-03-20 18:33:53 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 72 ORDER BY is_correct DESC;
+2017-03-20 18:33:53 DEBUG StartSession:44 - [Playstation 2, Wii, NES, Xbox 360]
+2017-03-20 18:33:53 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 72;
+2017-03-20 18:33:54 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (18, 280);
+2017-03-20 18:33:54 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:33:54 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 67 ORDER BY is_correct DESC;
+2017-03-20 18:33:54 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 67 ORDER BY is_correct DESC;
+2017-03-20 18:33:54 DEBUG StartSession:44 - [30, 12, 24, 100, 200]
+2017-03-20 18:33:54 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 67;
+2017-03-20 18:33:55 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (18, 260);
+2017-03-20 18:33:55 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:33:55 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 43 ORDER BY is_correct DESC;
+2017-03-20 18:33:55 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 43 ORDER BY is_correct DESC;
+2017-03-20 18:33:55 DEBUG StartSession:44 - [Wings, Panthers, Jets, Predators]
+2017-03-20 18:33:55 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 43;
+2017-03-20 18:33:56 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (18, 169);
+2017-03-20 18:33:56 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:33:56 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 6 ORDER BY is_correct DESC;
+2017-03-20 18:33:56 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 6 ORDER BY is_correct DESC;
+2017-03-20 18:33:56 DEBUG StartSession:44 - [Galchenyuk, Pacioretty, Glozman, Radulov]
+2017-03-20 18:33:56 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 6;
+2017-03-20 18:33:57 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (18, 21);
+2017-03-20 18:33:58 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:33:58 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 77 ORDER BY is_correct DESC;
+2017-03-20 18:33:58 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 77 ORDER BY is_correct DESC;
+2017-03-20 18:33:58 DEBUG StartSession:44 - [Sonic, Crash Bandicoot, Lucky Luke]
+2017-03-20 18:33:58 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 77;
+2017-03-20 18:34:00 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (18, 298);
+2017-03-20 18:34:00 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:34:00 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:34:00 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:34:00 DEBUG StartSession:44 - [Ellie, Chloe, Susy, Bertha]
+2017-03-20 18:34:00 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 4;
+2017-03-20 18:34:01 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (18, 13);
+2017-03-20 18:34:01 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:34:01 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:34:01 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:34:01 DEBUG StartSession:44 - [Red Wings, Panthers, Jets, Predators]
+2017-03-20 18:34:01 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 92;
+2017-03-20 18:34:03 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (18, 359);
+2017-03-20 18:34:03 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:34:07 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players ORDER BY level DESC, total_points DESC LIMIT 10;
+2017-03-20 18:34:39 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:34:39 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 19;
+2017-03-20 18:34:39 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 84 ORDER BY is_correct DESC;
+2017-03-20 18:34:39 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 84 ORDER BY is_correct DESC;
+2017-03-20 18:34:39 DEBUG StartSession:44 - [Nothing, Wow And Wing Long Kick In Jack Manson, War Arsenal Won Losing King in Jarred Mansion]
+2017-03-20 18:34:39 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 84;
+2017-03-20 18:34:40 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (19, 327);
+2017-03-20 18:34:40 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:34:40 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:34:40 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 89 ORDER BY is_correct DESC;
+2017-03-20 18:34:40 DEBUG StartSession:44 - [Canadiens, Maple Leafs, Blackhawks, Montrealers]
+2017-03-20 18:34:40 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 89;
+2017-03-20 18:34:41 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (19, 347);
+2017-03-20 18:34:41 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:34:41 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:34:41 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:34:41 DEBUG StartSession:44 - [Ellie, Chloe, Susy, Bertha]
+2017-03-20 18:34:41 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 4;
+2017-03-20 18:34:42 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (19, 13);
+2017-03-20 18:34:42 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:34:59 DEBUG DBConnection:26 - query: SELECT username, level, total_points FROM players ORDER BY level DESC, total_points DESC LIMIT 10;
+2017-03-20 18:38:56 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:39:04 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:39:09 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:39:09 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 20;
+2017-03-20 18:39:09 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 43 ORDER BY is_correct DESC;
+2017-03-20 18:39:09 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 43 ORDER BY is_correct DESC;
+2017-03-20 18:39:09 DEBUG StartSession:46 - [Wings, Panthers, Jets, Predators]
+2017-03-20 18:39:09 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 43;
+2017-03-20 18:40:17 DEBUG Application:39 - Logging initialized.
+2017-03-20 18:40:26 DEBUG DBConnection:26 - query: SELECT password FROM Users WHERE username='fredglozman';
+2017-03-20 18:40:29 DEBUG DBConnection:26 - query: SELECT sid FROM sessions WHERE username = 'fredglozman' ORDER BY time DESC, sid DESC LIMIT 1;
+2017-03-20 18:40:29 DEBUG DBConnection:26 - query: SELECT qid FROM containments WHERE sid = 21;
+2017-03-20 18:40:29 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 20 ORDER BY is_correct DESC;
+2017-03-20 18:40:29 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 20 ORDER BY is_correct DESC;
+2017-03-20 18:40:29 DEBUG StartSession:46 - [Palat, Johnson, Kucherov, Stamkos]
+2017-03-20 18:40:29 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 20;
+2017-03-20 18:40:34 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (21, 77);
+2017-03-20 18:40:35 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';
+2017-03-20 18:40:35 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:40:35 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 92 ORDER BY is_correct DESC;
+2017-03-20 18:40:35 DEBUG StartSession:46 - [Red Wings, Panthers, Jets, Predators]
+2017-03-20 18:40:35 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 92;
+2017-03-20 18:40:44 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (21, 360);
+2017-03-20 18:40:44 DEBUG DBConnection:26 - query: SELECT content FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:40:44 DEBUG DBConnection:26 - query: SELECT cid FROM choices WHERE qid = 4 ORDER BY is_correct DESC;
+2017-03-20 18:40:44 DEBUG StartSession:46 - [Ellie, Chloe, Susy, Bertha]
+2017-03-20 18:40:44 DEBUG DBConnection:26 - query: SELECT content FROM questions WHERE qid = 4;
+2017-03-20 18:40:50 DEBUG DBConnection:55 - update/insert/delete: INSERT INTO selections VALUES (21, 13);
+2017-03-20 18:40:50 DEBUG DBConnection:55 - update/insert/delete: UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = 'fredglozman';

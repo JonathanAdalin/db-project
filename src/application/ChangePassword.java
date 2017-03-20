@@ -1,7 +1,5 @@
 package application;
 
-import java.util.Scanner;
-
 import model.CurrentUser;
 import model.DBConnection;
 
@@ -9,11 +7,9 @@ public class ChangePassword implements MenuChoice{
 
 	@Override
 	public void execute() {
-		Scanner uInput = new Scanner(System.in);
-
 		while (true) {
 			System.out.print("Old Password: ");
-			String oldPassword = uInput.nextLine();
+			String oldPassword = UserInput.getInstance().getString();
 			
 			if (!oldPassword.equals(CurrentUser.getInstance().getPassword())) {
 				System.out.println("Error: Incorrect password");
@@ -21,10 +17,10 @@ public class ChangePassword implements MenuChoice{
 			}
 			
 			System.out.print("New Password: ");
-			String newPassword = uInput.nextLine();
+			String newPassword = UserInput.getInstance().getString();
 
 			System.out.print("Confirm New Password: ");
-			String confirmedNewPassword = uInput.nextLine();
+			String confirmedNewPassword = UserInput.getInstance().getString();
 			
 			if (!newPassword.equals(confirmedNewPassword)) {
 				System.out.println("Error: Mismatched passwords");
@@ -32,7 +28,9 @@ public class ChangePassword implements MenuChoice{
 			}
 			
 			if (!SignUp.validPassword(newPassword)) {
-				System.out.println("Error: Incorrect username or password");
+				System.out.println("Error: Your password must contain between "
+						+ SignUp.MIN_PASSWORD_SIZE + " and " + SignUp.MAX_PASSWORD_SIZE
+						+ " characters and have at least 1 special character");
 				continue;
 			} 
 			
@@ -42,12 +40,10 @@ public class ChangePassword implements MenuChoice{
 									
 			break;
 		}
-
-		uInput.close();
 	}
 
 	private void updatePassword(String newPassword) {
-		String sqlUpdate = "UPDATE users SET password = " + newPassword + " WHERE username = \"" + CurrentUser.getInstance().getUsername() + "\" ;";
+		String sqlUpdate = "UPDATE users SET password = '" + newPassword + "' WHERE username = '" + CurrentUser.getInstance().getUsername() + "' ;";
 		DBConnection.getInstance().update(sqlUpdate);
 		
 		CurrentUser.getInstance().setPassword(newPassword);

@@ -2,29 +2,33 @@ package application;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.log4j.Logger;
 
 import model.CurrentUser;
 import model.DBConnection;
 import model.QueryResult;
 
 public class SignUp implements MenuChoice {
-	private static final int MIN_PASSWORD_SIZE = 8;
-	private static final int MAX_PASSWORD_SIZE = 32;
+	private final static Logger logger = Logger.getLogger(MenuChoice.class);
+
+	public static final int MIN_PASSWORD_SIZE = 8;
+	public static final int MAX_PASSWORD_SIZE = 32;
 
 	@Override
 	public void execute() {
-		Scanner uInput = new Scanner(System.in);
 
 		while (true) {
 			System.out.print("Username: ");
-			String username = uInput.nextLine();
+			String username = UserInput.getInstance().getString();
 			
 			System.out.print("Password: ");
-			String password = uInput.nextLine();
+			String password = UserInput.getInstance().getString();
 			
 			System.out.print("Confirm Password: ");
-			String confirmedPassword = uInput.nextLine();
+			String confirmedPassword = UserInput.getInstance().getString();
 
 			
 			if (!validUsername(username)) {
@@ -53,8 +57,6 @@ public class SignUp implements MenuChoice {
 			
 			break;
 		}
-
-		uInput.close();
 		
 		new Menu(Menu.PLAYER_MENU).start();
 	}
@@ -68,7 +70,7 @@ public class SignUp implements MenuChoice {
 	}
 	
 	private boolean validUsername(String username) {
-		String sqlQuery = "SELECT username FROM Users WHERE username=\"" + username + "\";";
+		String sqlQuery = "SELECT username FROM Users WHERE username='" + username + "';";
 		
 		QueryResult queryResult = DBConnection.getInstance().query(sqlQuery);
 		ResultSet result = queryResult.getResult();
@@ -85,8 +87,11 @@ public class SignUp implements MenuChoice {
 	
 	public static boolean validPassword(String password) {
 		boolean goodLength = password.length() >= MIN_PASSWORD_SIZE && password.length() <= MAX_PASSWORD_SIZE;
-		boolean containsSpecialCharacters = password.contains("[^A-Za-z0-9]");
 		
+		Pattern p = Pattern.compile("[^A-Za-z0-9]");   
+	    Matcher m = p.matcher(password);
+	    boolean containsSpecialCharacters = m.find();
+	    	
 		return goodLength && containsSpecialCharacters;
 	}
 
