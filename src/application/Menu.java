@@ -3,6 +3,9 @@ package application;
 import java.util.Scanner;
 
 public class Menu {
+	public static final MenuChoice[] PLAYER_MENU = {new StartSession(), new ViewLeaderboard(), new ViewFollowings(), new FollowToggle(), new ChangePassword()};
+	public static final MenuChoice[] SIGNIN_SIGNUP_MENU = {new SignUp(), new SignIn()};
+
 	private MenuChoice[] menuChoices;
 	
 	public Menu(MenuChoice[] menuChoices) {
@@ -16,15 +19,19 @@ public class Menu {
 		}
 		System.out.println((++i) + ". Quit");
 
+		Scanner uInput = new Scanner(System.in);
+
 		while (true) {
-			Scanner uInput = new Scanner(System.in);
 			String input = uInput.nextLine();
 			int selection;
 			
 			try {
 				selection = Integer.parseInt(input);
 				
-				if (selection <= 0 || selection > i) {
+				if (selection == i) {
+					uInput.close();
+					System.exit(0);
+				} else if (selection <= 0 || selection > i) {
 					throw new Exception("Selection out of range");
 				}
 			} catch (Exception nfe) {

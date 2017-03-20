@@ -25,7 +25,6 @@ public class DBConnection {
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sqlString);
 				stmt.close();
-				
 				return rs;
 			} catch (SQLException e) {
 				System.out.println("Error: Failed to query the Database");
@@ -36,6 +35,59 @@ public class DBConnection {
 		} else {
 			throw new RuntimeException("Error, Connection conn is null");
 		}		
+	}
+	
+	public void delete(String sqlString) {
+		update(sqlString);
+	}
+	
+	public void insert(String sqlString) {
+		update(sqlString);
+	}
+	
+	public void update(String sqlString) {
+		connect();
+		
+		if (conn != null) {
+			try {
+				Statement stmt = conn.createStatement();
+				stmt.executeUpdate(sqlString);
+				stmt.close();
+			} catch (SQLException e) {
+				System.out.println("Error: Failed to update the Database");
+				throw new RuntimeException(e);
+			} finally {
+				close();
+			}	
+		} else {
+			throw new RuntimeException("Error, Connection conn is null");
+		}
+	}
+	
+	public void executeCreateSessionStoredProcedure(int questionCount) {
+		connect();
+		
+		if (conn != null) {
+			ResultSet rs = null;
+			
+			try {
+				CallableStatement cs = conn.prepareCall("{call create_session(?,?)}"); 
+				cs.setString(1, CurrentUser.getInstance().getUsername()); 
+				cs.setInt(2, questionCount);
+				rs = cs.executeQuery();
+			} catch (SQLException e) {
+				System.out.println("Error: Failed to update the Database");
+				throw new RuntimeException(e);
+			} finally {
+				if (rs != null) {
+					closeResultSet(rs);
+				}
+				
+				close();
+			}	
+		} else {
+			throw new RuntimeException("Error, Connection conn is null");
+		}
 	}
 	
 	private void connect() {
@@ -67,6 +119,14 @@ public class DBConnection {
 			conn.close();
 		} catch (SQLException e) {
 			//oh well
+		}
+	}
+	
+	public static void closeResultSet(ResultSet rs) {
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			//oh well...
 		}
 	}
 }
