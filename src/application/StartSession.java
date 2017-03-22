@@ -7,15 +7,11 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import model.CurrentUser;
 import model.DBConnection;
 import model.QueryResult;
 
 public class StartSession implements MenuChoice {
-
-	private final static Logger logger = Logger.getLogger(StartSession.class);
 
 	@Override
 	public void execute() {
@@ -43,7 +39,6 @@ public class StartSession implements MenuChoice {
 		for (int qid : questionIds) {
 			List<String> contents = getChoicesContents(qid);
 			List<Integer> cids = getChoicesIds(qid);
-			logger.debug(contents.toString());
 			
 			int counter = 0;
 			List<MenuChoice> choices = new LinkedList<MenuChoice>();
@@ -55,7 +50,7 @@ public class StartSession implements MenuChoice {
 		
 			Collections.shuffle(choices);
 			
-			System.out.println(getQuestionContent(qid));
+			System.out.println("\n" + getQuestionContent(qid));
 			
 			MenuChoice[] c = new MenuChoice[choices.size()];
 			for (int i = 0; i < choices.size(); i++) {

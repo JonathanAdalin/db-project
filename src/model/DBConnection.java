@@ -2,11 +2,7 @@ package model;
 
 import java.sql.*;
 
-import org.apache.log4j.Logger;
-
 public class DBConnection {
-
-	private final static Logger logger = Logger.getLogger(DBConnection.class);
 	
 	private Connection conn;
 	private static DBConnection instance;
@@ -22,9 +18,7 @@ public class DBConnection {
 		return instance;
 	}
 	
-	public QueryResult query(String sqlString) {
-		logger.debug("query: " + sqlString);
-		
+	public QueryResult query(String sqlString) {		
 		connect();
 		
 		if (conn != null) {
@@ -51,9 +45,7 @@ public class DBConnection {
 		update(sqlString);
 	}
 	
-	public void update(String sqlString) {
-		logger.debug("update/insert/delete: " + sqlString);
-		
+	public void update(String sqlString) {		
 		connect();
 		
 		if (conn != null) {

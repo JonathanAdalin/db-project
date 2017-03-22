@@ -17,7 +17,11 @@ public class Menu {
 		this.forever = forever;
 	}
 	
-	public void start() {
+	public void start() {	
+		if (forever) {
+			System.out.println();
+		}
+		
 		int i;
 		for (i = 0; i < menuChoices.length; i++) {
 			System.out.println((i+1) + ". " + menuChoices[i].getDescription());
@@ -47,7 +51,7 @@ public class Menu {
 			if (!forever) {
 				break;
 			}
-			
+				
 			for (i = 0; i < menuChoices.length; i++) {
 				System.out.println((i+1) + ". " + menuChoices[i].getDescription());
 			}

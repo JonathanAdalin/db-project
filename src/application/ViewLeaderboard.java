@@ -19,6 +19,7 @@ public class ViewLeaderboard implements MenuChoice {
 		ResultSet result = queryResult.getResult();
 				
 		try {
+			System.out.println();
 			System.out.println("Username, Level, Total Points");
 			
 			int counter = 1;
@@ -29,6 +30,9 @@ public class ViewLeaderboard implements MenuChoice {
 				
 				System.out.println(counter++ + ". " + username + ", " + level + ", " + total_points);
 			}
+			
+			System.out.println();
+			
 		} catch (SQLException e) {
 			System.out.println("Error: failed to extract data from ResultSet");
 			throw new RuntimeException(e);

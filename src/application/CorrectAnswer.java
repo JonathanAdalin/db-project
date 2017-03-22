@@ -26,7 +26,7 @@ public class CorrectAnswer implements MenuChoice {
 	}
 	
 	public void updateLevel() {
-		String sqlString = "UPDATE players SET total_points = total_points + 100, level = total_points/1000 WHERE username = '" + CurrentUser.getInstance().getUsername() +"';";
+		String sqlString = "UPDATE players SET total_points = total_points + 100 WHERE username = '" + CurrentUser.getInstance().getUsername() +"';";
 		DBConnection.getInstance().update(sqlString);
 	}
 

@@ -5,14 +5,11 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
-
 import model.CurrentUser;
 import model.DBConnection;
 import model.QueryResult;
 
 public class SignUp implements MenuChoice {
-	private final static Logger logger = Logger.getLogger(MenuChoice.class);
 
 	public static final int MIN_PASSWORD_SIZE = 8;
 	public static final int MAX_PASSWORD_SIZE = 32;
